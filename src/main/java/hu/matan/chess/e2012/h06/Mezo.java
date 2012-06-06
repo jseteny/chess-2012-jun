@@ -1,9 +1,12 @@
 package hu.matan.chess.e2012.h06;
 
+import static java.lang.Math.abs;
+
 /**
  * @author Setény János
  * @version 6/6/12
  */
+@SuppressWarnings("RedundantIfStatement")
 public final class Mezo {
 
     private char oszlop;
@@ -26,7 +29,6 @@ public final class Mezo {
         this.sor = sor;
     }
 
-    @SuppressWarnings("RedundantIfStatement")
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -53,5 +55,44 @@ public final class Mezo {
                 "oszlop=" + oszlop +
                 ", sor=" + sor +
                 '}';
+    }
+
+    public boolean fuggolegesenMehet(Mezo ide) {
+        return oszlop == ide.oszlop;
+    }
+
+    public boolean egyLepes(Mezo cel) {
+        if (cel == this)
+            return false;
+
+        if (abs(oszlop - cel.oszlop) > 1) {
+            return false;
+        }
+
+        if (abs(sor - cel.sor) > 1) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean ketLepes(Mezo cel) {
+        if (abs(oszlop - cel.oszlop) == 2) {
+            return true;
+        }
+
+        if (abs(sor - cel.sor) == 2) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public int getSor() {
+        return sor;
+    }
+
+    public char getOszlop() {
+        return oszlop;
     }
 }
