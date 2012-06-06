@@ -10,7 +10,18 @@ public final class Mezo {
     private int sor;
 
 
-    public Mezo(char oszlop, int sor) {
+    public static Mezo at(String hely) {
+        return new Mezo(
+                hely.charAt(0), // oszlop
+                hely.charAt(1) - '0' // sor
+        );
+    }
+
+    public static Mezo at(char oszlop, int sor) {
+        return new Mezo(oszlop, sor);
+    }
+
+    private Mezo(char oszlop, int sor) {
         this.oszlop = oszlop;
         this.sor = sor;
     }
@@ -34,5 +45,13 @@ public final class Mezo {
         int result = sor;
         result = 31 * result + (int) oszlop;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Mezo{" +
+                "oszlop=" + oszlop +
+                ", sor=" + sor +
+                '}';
     }
 }
