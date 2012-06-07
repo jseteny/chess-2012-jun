@@ -29,4 +29,12 @@ public abstract class Bastya extends Figura {
     public void igyLepne(Mezo innen, Mezo ide) {
         throw new NotImplementedException();
     }
+
+    @Override
+    public void vanEUtbanFigura(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
+        vanEUtbanFuggolegesenFel(innen, ide, egyEgyMezoEllenorzoje);
+        vanEUtbanFuggolegesenLe(innen, ide, egyEgyMezoEllenorzoje);
+        vanEUtbanVizsintesenJobbra(innen, ide, egyEgyMezoEllenorzoje);
+        vanEUtbanVizszintesenBalra(innen, ide, egyEgyMezoEllenorzoje);
+    }
 }

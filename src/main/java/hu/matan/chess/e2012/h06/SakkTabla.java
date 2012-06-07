@@ -1,5 +1,6 @@
 package hu.matan.chess.e2012.h06;
 
+import hu.matan.chess.e2012.h06.validalas.CsakHuszarralLehetAtugraniException;
 import hu.matan.chess.e2012.h06.validalas.SajatBabutNemLehetUtniException;
 import hu.matan.chess.e2012.h06.validalas.UresMezoException;
 
@@ -26,6 +27,7 @@ import static hu.matan.chess.e2012.h06.Vezer.FEKETE_VEZER;
 public class SakkTabla {
 
     private Map<Mezo, Figura> tabla = new HashMap<Mezo, Figura>();
+
 
     public SakkTabla() {
         setFigura('a', 8, new FEKETE_BASTYA());
@@ -71,14 +73,6 @@ public class SakkTabla {
         return tabla.get(mezo);
     }
 
-    public Figura letezoFigura(Mezo mezo) {
-        Figura figura = tabla.get(mezo);
-        if (null == figura)
-            throw new UresMezoException(mezo);
-        else
-            return figura;
-    }
-
     private void setFigura(char oszlop, int sor, Figura figura) {
         tabla.put(Mezo.at(oszlop, sor), figura);
     }
@@ -91,33 +85,56 @@ public class SakkTabla {
         Mezo innen = Mezo.at(lepes.substring(0, 2));
         Mezo ide = Mezo.at(lepes.substring(2, 4));
 
-        Figura lepoFigura = igyMenneHaNincsUtbanSemmi(innen, ide);
-        if (utes(ide)) {
-            if (figura(innen).azonosSzinu(figura(ide))) {
-                throw new SajatBabutNemLehetUtniException(innen, ide);
-            }
-            lepoFigura.igyUtne(innen, ide);
-        } else {
-            lepoFigura.igyLepne(innen, ide);
-        }
-
-        setFigura(innen, null);
-        setFigura(ide, lepoFigura);
-    }
-
-    private Figura igyMenneHaNincsUtbanSemmi(Mezo innen, Mezo ide) {
-        Figura lepoFigura = letezoFigura(innen);
-        if (utbanVanEgyFigura(innen, ide) && lepoFigura.nemHuszar()) {
-            throw new CsakHuszarralLehetAtugrani();
-        }
-        return lepoFigura;
-    }
-
-    private boolean utbanVanEgyFigura(Mezo innen, Mezo ide) {
-        lepes kulon class lesz
+        new Lepes(innen, ide).lepj();
     }
 
     private boolean utes(Mezo ide) {
         return figura(ide) != null;
+    }
+
+
+    private class Lepes {
+
+        private final Mezo innen;
+        private final Mezo ide;
+        private final Figura lepoFigura;
+
+        public Lepes(Mezo innen, Mezo ide) {
+            this.innen = innen;
+            this.ide = ide;
+            lepoFigura = tabla.get(innen);
+        }
+
+        private void lepj() {
+
+            ellenorizdHogyNemUresMezorolLep();
+            ellenorizdHogyNincsUtbanSemmi();
+
+            if (utes(ide)) {
+                if (figura(innen).azonosSzinu(figura(ide))) {
+                    throw new SajatBabutNemLehetUtniException(innen, ide);
+                }
+                lepoFigura.igyUtne(innen, ide);
+            } else {
+                lepoFigura.igyLepne(innen, ide);
+            }
+
+            setFigura(innen, null);
+            setFigura(ide, lepoFigura);
+        }
+
+        private void ellenorizdHogyNemUresMezorolLep() {
+            if (null == lepoFigura)
+                throw new UresMezoException(innen);
+        }
+
+        private void ellenorizdHogyNincsUtbanSemmi() {
+            lepoFigura.vanEUtbanFigura(innen, ide, new VanEIttFigura() {
+                public void ellenorizd(char oszlop, int sor) {
+                    if (tabla.get(Mezo.at(oszlop, sor)) != null)
+                        throw new CsakHuszarralLehetAtugraniException(innen, ide, Mezo.at(oszlop, sor));
+                }
+            });
+        }
     }
 }

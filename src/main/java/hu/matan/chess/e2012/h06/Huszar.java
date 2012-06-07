@@ -42,4 +42,9 @@ public abstract class Huszar extends Figura {
 
         throw new HuszarNemLephetIgyException(innen, ide);
     }
+
+    @Override
+    public void vanEUtbanFigura(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
+        // A huszárnak nics útban semmi
+    }
 }

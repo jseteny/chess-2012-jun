@@ -72,6 +72,14 @@ public abstract class Gyalog extends Figura {
         throw new GyalogNemLephetIgyException(innen, ide);
     }
 
+    @Override
+    public void vanEUtbanFigura(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
+        int kulonbseg = ide.getSor() - innen.getSor();
+        if (abs(kulonbseg) == 2) {
+            egyEgyMezoEllenorzoje.ellenorizd(innen.getOszlop(), innen.getSor() + kulonbseg / 2);
+        }
+    }
+
     protected static boolean szomszedosOszlop(Mezo innen, Mezo ide) {
         return abs(innen.getOszlop() - ide.getOszlop()) == 1;
     }
