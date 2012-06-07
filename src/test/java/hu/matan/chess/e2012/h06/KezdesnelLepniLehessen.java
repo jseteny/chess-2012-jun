@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static hu.matan.chess.e2012.h06.Gyalog.FEHER_GYALOG;
 import static hu.matan.chess.e2012.h06.Gyalog.FEKETE_GYALOG;
+import static hu.matan.chess.e2012.h06.Huszar.FEKETE_HUSZAR;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
@@ -28,5 +29,13 @@ public class KezdesnelLepniLehessen extends KezdoAllapotTeszt {
 
         assertNull("Elmozdult a gyalog e7-ről", tabla.figura("e7"));
         assertThat(tabla.figura("e5"), instanceOf(FEKETE_GYALOG.class));
+    }
+
+    @Test
+    public void feketeHuszarralA6ra() {
+        tabla.lepj("b8a6");
+
+        assertNull("Elmozdult a fekete huszár b8-ról", tabla.figura("b8"));
+        assertThat(tabla.figura("a6"), instanceOf(FEKETE_HUSZAR.class));
     }
 }

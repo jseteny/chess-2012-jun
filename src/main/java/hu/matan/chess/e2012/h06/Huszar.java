@@ -1,6 +1,8 @@
 package hu.matan.chess.e2012.h06;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import hu.matan.chess.e2012.h06.validalas.HuszarNemLephetIgyException;
+
+import static java.lang.Math.abs;
 
 /**
  * @author Setény János
@@ -22,16 +24,22 @@ public abstract class Huszar extends Figura {
 
     @Override
     public void igyUtne(Mezo innen, Mezo ide) {
-        throw new NotImplementedException();
+        igyLepne(innen, ide);
     }
 
     @Override
     public void igyLepne(Mezo innen, Mezo ide) {
-        throw new NotImplementedException();
-    }
+        int sorKulonbseg = abs(innen.getSor() - ide.getSor());
+        int oszlopKulonbseg = abs(innen.getOszlop() - ide.getOszlop());
 
-    @Override
-    public boolean azonosSzinu(Figura masik) {
-        throw new NotImplementedException();
+        if (sorKulonbseg == 2 && oszlopKulonbseg == 1) {
+            return;
+        }
+
+        if (oszlopKulonbseg == 2 && sorKulonbseg == 1) {
+            return;
+        }
+
+        throw new HuszarNemLephetIgyException(innen, ide);
     }
 }

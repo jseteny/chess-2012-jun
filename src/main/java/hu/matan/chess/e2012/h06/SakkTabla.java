@@ -91,19 +91,29 @@ public class SakkTabla {
         Mezo innen = Mezo.at(lepes.substring(0, 2));
         Mezo ide = Mezo.at(lepes.substring(2, 4));
 
-        Figura figura = letezoFigura(innen);
-
+        Figura lepoFigura = igyMenneHaNincsUtbanSemmi(innen, ide);
         if (utes(ide)) {
             if (figura(innen).azonosSzinu(figura(ide))) {
                 throw new SajatBabutNemLehetUtniException(innen, ide);
             }
-            figura.igyUtne(innen, ide);
+            lepoFigura.igyUtne(innen, ide);
         } else {
-            figura.igyLepne(innen, ide);
+            lepoFigura.igyLepne(innen, ide);
         }
 
         setFigura(innen, null);
-        setFigura(ide, figura);
+        setFigura(ide, lepoFigura);
+    }
+
+    private Figura igyMenneHaNincsUtbanSemmi(Mezo innen, Mezo ide) {
+        Figura lepoFigura = letezoFigura(innen);
+        if (utbanVanEgyFigura(innen, ide) && lepoFigura.nemHuszar()) {
+            throw new CsakHuszarralLehetAtugrani();
+        }
+        return lepoFigura;
+    }
+
+    private boolean utbanVanEgyFigura(Mezo innen, Mezo ide) {
     }
 
     private boolean utes(Mezo ide) {

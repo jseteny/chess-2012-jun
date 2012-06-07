@@ -25,4 +25,8 @@ public class Utni_ne_lehessen extends KezdoAllapotTeszt {
         tabla.lepj("f2e3");
     }
 
+    @Test(expected = SajatBabutNemLehetUtniException.class)
+    public void huszarralF7re() {
+        tabla.lepj("g8f7");
+    }
 }

@@ -11,6 +11,7 @@ import static java.lang.Math.abs;
 public abstract class Gyalog extends Figura {
 
     public static class FEHER_GYALOG extends Gyalog {
+
         protected boolean kezdoPozicio(Mezo innen) {
             return innen.getSor() == 2;
         }
@@ -20,7 +21,7 @@ public abstract class Gyalog extends Figura {
         }
 
         protected boolean atlosanEloreUthet(Mezo innen, Mezo ide) {
-            return abs(innen.getOszlop() - ide.getOszlop()) == 1 && ide.getSor() > innen.getSor();
+            return szomszedosOszlop(innen, ide) && ide.getSor() == innen.getSor() + 1;
         }
 
         protected String szine() {
@@ -28,8 +29,9 @@ public abstract class Gyalog extends Figura {
         }
     }
 
-
     public static class FEKETE_GYALOG extends Gyalog {
+
+
         protected boolean kezdoPozicio(Mezo innen) {
             return innen.getSor() == 7;
         }
@@ -39,14 +41,14 @@ public abstract class Gyalog extends Figura {
         }
 
         protected boolean atlosanEloreUthet(Mezo innen, Mezo ide) {
-            return abs(innen.getOszlop() - ide.getOszlop()) == 1 && ide.getSor() < innen.getSor();
+            return szomszedosOszlop(innen, ide) && ide.getSor() == innen.getSor() - 1;
         }
 
         protected String szine() {
             return FEKETE;
         }
-    }
 
+    }
 
     @Override
     public void igyUtne(Mezo innen, Mezo ide) {
@@ -56,6 +58,7 @@ public abstract class Gyalog extends Figura {
 
         throw new GyalogNemLephetIgyException(innen, ide);
     }
+
 
     @Override
     public void igyLepne(Mezo innen, Mezo ide) {
@@ -69,9 +72,22 @@ public abstract class Gyalog extends Figura {
         throw new GyalogNemLephetIgyException(innen, ide);
     }
 
+    protected static boolean szomszedosOszlop(Mezo innen, Mezo ide) {
+        return abs(innen.getOszlop() - ide.getOszlop()) == 1;
+    }
+
+    /**
+     * Szin függő
+     */
     protected abstract boolean kezdoPozicio(Mezo innen);
 
+    /**
+     * Szin függő
+     */
     protected abstract boolean eloreMehet(Mezo innen, Mezo ide);
 
+    /**
+     * Szin függő
+     */
     protected abstract boolean atlosanEloreUthet(Mezo innen, Mezo ide);
 }

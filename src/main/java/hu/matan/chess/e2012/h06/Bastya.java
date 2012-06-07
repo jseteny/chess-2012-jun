@@ -29,9 +29,4 @@ public abstract class Bastya extends Figura {
     public void igyLepne(Mezo innen, Mezo ide) {
         throw new NotImplementedException();
     }
-
-    @Override
-    public boolean azonosSzinu(Figura masik) {
-        throw new NotImplementedException();
-    }
 }
