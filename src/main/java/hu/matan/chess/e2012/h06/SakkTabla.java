@@ -114,6 +114,7 @@ public class SakkTabla {
     }
 
     private boolean utbanVanEgyFigura(Mezo innen, Mezo ide) {
+        lepes kulon class lesz
     }
 
     private boolean utes(Mezo ide) {
