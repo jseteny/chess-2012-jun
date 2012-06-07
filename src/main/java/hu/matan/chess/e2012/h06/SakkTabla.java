@@ -6,9 +6,18 @@ import hu.matan.chess.e2012.h06.validalas.UresMezoException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static hu.matan.chess.e2012.h06.Bastya.FEHER_BASTYA;
+import static hu.matan.chess.e2012.h06.Bastya.FEKETE_BASTYA;
+import static hu.matan.chess.e2012.h06.Futo.FEHER_FUTO;
+import static hu.matan.chess.e2012.h06.Futo.FEKETE_FUTO;
 import static hu.matan.chess.e2012.h06.Gyalog.FEHER_GYALOG;
 import static hu.matan.chess.e2012.h06.Gyalog.FEKETE_GYALOG;
-import static hu.matan.chess.e2012.h06.Tobbi.*;
+import static hu.matan.chess.e2012.h06.Huszar.FEHER_HUSZAR;
+import static hu.matan.chess.e2012.h06.Huszar.FEKETE_HUSZAR;
+import static hu.matan.chess.e2012.h06.Kiraly.FEHER_KIRALY;
+import static hu.matan.chess.e2012.h06.Kiraly.FEKETE_KIRALY;
+import static hu.matan.chess.e2012.h06.Vezer.FEHER_VEZER;
+import static hu.matan.chess.e2012.h06.Vezer.FEKETE_VEZER;
 
 /**
  * @author Setény János
@@ -19,37 +28,37 @@ public class SakkTabla {
     private Map<Mezo, Figura> tabla = new HashMap<Mezo, Figura>();
 
     public SakkTabla() {
-        setFigura('a', 8, FEKETE_BASTYA);
-        setFigura('b', 8, FEKETE_HUSZAR);
-        setFigura('c', 8, FEKETE_FUTO);
+        setFigura('a', 8, new FEKETE_BASTYA());
+        setFigura('b', 8, new FEKETE_HUSZAR());
+        setFigura('c', 8, new FEKETE_FUTO());
 
-        setFigura('d', 8, FEKETE_VEZER);
-        setFigura('e', 8, FEKETE_KIRALY);
+        setFigura('d', 8, new FEKETE_VEZER());
+        setFigura('e', 8, new FEKETE_KIRALY());
 
-        setFigura('f', 8, FEKETE_FUTO);
-        setFigura('g', 8, FEKETE_HUSZAR);
-        setFigura('h', 8, FEKETE_BASTYA);
+        setFigura('f', 8, new FEKETE_FUTO());
+        setFigura('g', 8, new FEKETE_HUSZAR());
+        setFigura('h', 8, new FEKETE_BASTYA());
 
         int sor = 7;
         for (char oszlop = 'a'; oszlop <= 'h'; ++oszlop) {
-            setFigura(oszlop, sor, FEKETE_GYALOG);
+            setFigura(oszlop, sor, new FEKETE_GYALOG());
         }
 
         sor = 2;
         for (char oszlop = 'a'; oszlop <= 'h'; ++oszlop) {
-            setFigura(oszlop, sor, FEHER_GYALOG);
+            setFigura(oszlop, sor, new FEHER_GYALOG());
         }
 
-        setFigura('a', 1, FEHER_BASTYA);
-        setFigura('b', 1, FEHER_HUSZAR);
-        setFigura('c', 1, FEHER_FUTO);
+        setFigura('a', 1, new FEHER_BASTYA());
+        setFigura('b', 1, new FEHER_HUSZAR());
+        setFigura('c', 1, new FEHER_FUTO());
 
-        setFigura('d', 1, FEHER_VEZER);
-        setFigura('e', 1, FEHER_KIRALY);
+        setFigura('d', 1, new FEHER_VEZER());
+        setFigura('e', 1, new FEHER_KIRALY());
 
-        setFigura('f', 1, FEHER_FUTO);
-        setFigura('g', 1, FEHER_HUSZAR);
-        setFigura('h', 1, FEHER_BASTYA);
+        setFigura('f', 1, new FEHER_FUTO());
+        setFigura('g', 1, new FEHER_HUSZAR());
+        setFigura('h', 1, new FEHER_BASTYA());
     }
 
     public Figura figura(String hely) {

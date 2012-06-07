@@ -4,8 +4,9 @@ import org.junit.Test;
 
 import static hu.matan.chess.e2012.h06.Gyalog.FEHER_GYALOG;
 import static hu.matan.chess.e2012.h06.Gyalog.FEKETE_GYALOG;
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
 
 /**
  * @author Setény János
@@ -18,7 +19,7 @@ public class KezdesnelLepniLehessen extends KezdoAllapotTeszt {
         tabla.lepj("e2e4");
 
         assertNull("Elmozdult a gyalog e2-ről", tabla.figura("e2"));
-        assertEquals(FEHER_GYALOG, tabla.figura("e4"));
+        assertThat(tabla.figura("e4"), instanceOf(FEHER_GYALOG.class));
     }
 
     @Test
@@ -26,6 +27,6 @@ public class KezdesnelLepniLehessen extends KezdoAllapotTeszt {
         tabla.lepj("e7e5");
 
         assertNull("Elmozdult a gyalog e7-ről", tabla.figura("e7"));
-        assertEquals(FEKETE_GYALOG, tabla.figura("e5"));
+        assertThat(tabla.figura("e5"), instanceOf(FEKETE_GYALOG.class));
     }
 }

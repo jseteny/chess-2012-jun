@@ -2,10 +2,21 @@ package hu.matan.chess.e2012.h06;
 
 import org.junit.Test;
 
+import static hu.matan.chess.e2012.h06.Bastya.FEHER_BASTYA;
+import static hu.matan.chess.e2012.h06.Bastya.FEKETE_BASTYA;
+import static hu.matan.chess.e2012.h06.Futo.FEHER_FUTO;
+import static hu.matan.chess.e2012.h06.Futo.FEKETE_FUTO;
 import static hu.matan.chess.e2012.h06.Gyalog.FEHER_GYALOG;
 import static hu.matan.chess.e2012.h06.Gyalog.FEKETE_GYALOG;
-import static hu.matan.chess.e2012.h06.Tobbi.*;
-import static junit.framework.Assert.assertEquals;
+import static hu.matan.chess.e2012.h06.Huszar.FEHER_HUSZAR;
+import static hu.matan.chess.e2012.h06.Huszar.FEKETE_HUSZAR;
+import static hu.matan.chess.e2012.h06.Kiraly.FEHER_KIRALY;
+import static hu.matan.chess.e2012.h06.Kiraly.FEKETE_KIRALY;
+import static hu.matan.chess.e2012.h06.Vezer.FEHER_VEZER;
+import static hu.matan.chess.e2012.h06.Vezer.FEKETE_VEZER;
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertThat;
+
 
 /**
  * @author Setény János
@@ -16,51 +27,51 @@ public class KezdesnelLegyen extends KezdoAllapotTeszt {
 
     @Test
     public void megfeleloHelyenAFeher16babuja() {
-        assertEquals(FEHER_GYALOG, tabla.figura("a2"));
-        assertEquals(FEHER_GYALOG, tabla.figura("b2"));
-        assertEquals(FEHER_GYALOG, tabla.figura("c2"));
-        assertEquals(FEHER_GYALOG, tabla.figura("d2"));
+        assertThat(tabla.figura("a2"), instanceOf(FEHER_GYALOG.class));
+        assertThat(tabla.figura("b2"), instanceOf(FEHER_GYALOG.class));
+        assertThat(tabla.figura("c2"), instanceOf(FEHER_GYALOG.class));
+        assertThat(tabla.figura("d2"), instanceOf(FEHER_GYALOG.class));
 
-        assertEquals(FEHER_GYALOG, tabla.figura("e2"));
-        assertEquals(FEHER_GYALOG, tabla.figura("f2"));
-        assertEquals(FEHER_GYALOG, tabla.figura("g2"));
-        assertEquals(FEHER_GYALOG, tabla.figura("h2"));
+        assertThat(tabla.figura("e2"), instanceOf(FEHER_GYALOG.class));
+        assertThat(tabla.figura("f2"), instanceOf(FEHER_GYALOG.class));
+        assertThat(tabla.figura("g2"), instanceOf(FEHER_GYALOG.class));
+        assertThat(tabla.figura("h2"), instanceOf(FEHER_GYALOG.class));
 
 
-        assertEquals(FEHER_BASTYA, tabla.figura("a1"));
-        assertEquals(FEHER_HUSZAR, tabla.figura("b1"));
-        assertEquals(FEHER_FUTO, tabla.figura("c1"));
+        assertThat(tabla.figura("a1"), instanceOf(FEHER_BASTYA.class));
+        assertThat(tabla.figura("b1"), instanceOf(FEHER_HUSZAR.class));
+        assertThat(tabla.figura("c1"), instanceOf(FEHER_FUTO.class));
 
-        assertEquals(FEHER_VEZER, tabla.figura("d1"));
-        assertEquals(FEHER_KIRALY, tabla.figura("e1"));
+        assertThat(tabla.figura("d1"), instanceOf(FEHER_VEZER.class));
+        assertThat(tabla.figura("e1"), instanceOf(FEHER_KIRALY.class));
 
-        assertEquals(FEHER_FUTO, tabla.figura("f1"));
-        assertEquals(FEHER_HUSZAR, tabla.figura("g1"));
-        assertEquals(FEHER_BASTYA, tabla.figura("h1"));
+        assertThat(tabla.figura("f1"), instanceOf(FEHER_FUTO.class));
+        assertThat(tabla.figura("g1"), instanceOf(FEHER_HUSZAR.class));
+        assertThat(tabla.figura("h1"), instanceOf(FEHER_BASTYA.class));
     }
 
     @Test
     public void megfeleloHelyenAFekete16babuja() {
-        assertEquals(FEKETE_GYALOG, tabla.figura("a7"));
-        assertEquals(FEKETE_GYALOG, tabla.figura("b7"));
-        assertEquals(FEKETE_GYALOG, tabla.figura("c7"));
-        assertEquals(FEKETE_GYALOG, tabla.figura("d7"));
+        assertThat(tabla.figura("a7"), instanceOf(FEKETE_GYALOG.class));
+        assertThat(tabla.figura("b7"), instanceOf(FEKETE_GYALOG.class));
+        assertThat(tabla.figura("c7"), instanceOf(FEKETE_GYALOG.class));
+        assertThat(tabla.figura("d7"), instanceOf(FEKETE_GYALOG.class));
 
-        assertEquals(FEKETE_GYALOG, tabla.figura("e7"));
-        assertEquals(FEKETE_GYALOG, tabla.figura("f7"));
-        assertEquals(FEKETE_GYALOG, tabla.figura("g7"));
-        assertEquals(FEKETE_GYALOG, tabla.figura("h7"));
+        assertThat(tabla.figura("e7"), instanceOf(FEKETE_GYALOG.class));
+        assertThat(tabla.figura("f7"), instanceOf(FEKETE_GYALOG.class));
+        assertThat(tabla.figura("g7"), instanceOf(FEKETE_GYALOG.class));
+        assertThat(tabla.figura("h7"), instanceOf(FEKETE_GYALOG.class));
 
 
-        assertEquals(FEKETE_BASTYA, tabla.figura("a8"));
-        assertEquals(FEKETE_HUSZAR, tabla.figura("b8"));
-        assertEquals(FEKETE_FUTO, tabla.figura("c8"));
+        assertThat(tabla.figura("a8"), instanceOf(FEKETE_BASTYA.class));
+        assertThat(tabla.figura("b8"), instanceOf(FEKETE_HUSZAR.class));
+        assertThat(tabla.figura("c8"), instanceOf(FEKETE_FUTO.class));
 
-        assertEquals(FEKETE_VEZER, tabla.figura("d8"));
-        assertEquals(FEKETE_KIRALY, tabla.figura("e8"));
+        assertThat(tabla.figura("d8"), instanceOf(FEKETE_VEZER.class));
+        assertThat(tabla.figura("e8"), instanceOf(FEKETE_KIRALY.class));
 
-        assertEquals(FEKETE_FUTO, tabla.figura("f8"));
-        assertEquals(FEKETE_HUSZAR, tabla.figura("g8"));
-        assertEquals(FEKETE_BASTYA, tabla.figura("h8"));
+        assertThat(tabla.figura("f8"), instanceOf(FEKETE_FUTO.class));
+        assertThat(tabla.figura("g8"), instanceOf(FEKETE_HUSZAR.class));
+        assertThat(tabla.figura("h8"), instanceOf(FEKETE_BASTYA.class));
     }
 }

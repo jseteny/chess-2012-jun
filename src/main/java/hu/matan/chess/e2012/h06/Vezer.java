@@ -6,11 +6,19 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  * @author Setény János
  * @version 6/6/12
  */
-public enum Tobbi implements Figura {
+public abstract class Vezer extends Figura {
 
-    FEHER_BASTYA, FEHER_HUSZAR, FEHER_FUTO, FEHER_VEZER, FEHER_KIRALY,
+    public static class FEHER_VEZER extends Vezer {
+        protected String szine() {
+            return FEHER;
+        }
+    }
 
-    FEKETE_BASTYA, FEKETE_HUSZAR, FEKETE_FUTO, FEKETE_VEZER, FEKETE_KIRALY;
+    public static class FEKETE_VEZER extends Vezer {
+        protected String szine() {
+            return FEKETE;
+        }
+    }
 
     @Override
     public void igyUtne(Mezo innen, Mezo ide) {
@@ -26,6 +34,4 @@ public enum Tobbi implements Figura {
     public boolean azonosSzinu(Figura masik) {
         throw new NotImplementedException();
     }
-
-
 }

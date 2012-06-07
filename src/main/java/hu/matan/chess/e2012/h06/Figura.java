@@ -4,11 +4,19 @@ package hu.matan.chess.e2012.h06;
  * @author Setény János
  * @version 6/6/12
  */
-public interface Figura {
+public abstract class Figura {
 
-    void igyUtne(Mezo innen, Mezo ide);
+    public final String FEHER = "feher";
+    public final String FEKETE = "fekete";
 
-    void igyLepne(Mezo innen, Mezo ide);
 
-    boolean azonosSzinu(Figura masik);
+    public boolean azonosSzinu(Figura masik) {
+        return masik.szine().equals(this.szine());
+    }
+
+    public abstract void igyUtne(Mezo innen, Mezo ide);
+
+    public abstract void igyLepne(Mezo innen, Mezo ide);
+
+    protected abstract String szine();
 }

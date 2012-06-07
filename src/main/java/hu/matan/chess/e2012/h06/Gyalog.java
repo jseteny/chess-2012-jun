@@ -8,77 +8,44 @@ import static java.lang.Math.abs;
  * @author Setény János
  * @version 6/6/12
  */
-public enum Gyalog implements Figura {
+public abstract class Gyalog extends Figura {
 
-    FEHER_GYALOG {
-        @Override
+    public static class FEHER_GYALOG extends Gyalog {
         protected boolean kezdoPozicio(Mezo innen) {
             return innen.getSor() == 2;
         }
 
-
-        @Override
         protected boolean eloreMehet(Mezo innen, Mezo ide) {
-            if (ide.getSor() > innen.getSor()) {
-                if (innen.fuggolegesenMehet(ide)) {
-                    return true;
-                }
-            }
-
-            return false;
+            return ide.getSor() > innen.getSor() && innen.fuggolegesenMehet(ide);
         }
 
-        @Override
         protected boolean atlosanEloreUthet(Mezo innen, Mezo ide) {
-            if (abs(innen.getOszlop() - ide.getOszlop()) == 1) {
-                if (ide.getSor() > innen.getSor()) {
-                    return true;
-                }
-            }
-
-            return false;
+            return abs(innen.getOszlop() - ide.getOszlop()) == 1 && ide.getSor() > innen.getSor();
         }
 
-        @Override
-        public boolean azonosSzinu(Figura masik) {
-            return masik.getClass() == FEHER_GYALOG.getClass();
+        protected String szine() {
+            return FEHER;
         }
-    },
+    }
 
 
-    FEKETE_GYALOG {
-        @Override
+    public static class FEKETE_GYALOG extends Gyalog {
         protected boolean kezdoPozicio(Mezo innen) {
             return innen.getSor() == 7;
         }
 
-        @Override
         protected boolean eloreMehet(Mezo innen, Mezo ide) {
-            if (ide.getSor() < innen.getSor()) {
-                if (innen.fuggolegesenMehet(ide)) {
-                    return true;
-                }
-            }
-
-            return false;
+            return ide.getSor() < innen.getSor() && innen.fuggolegesenMehet(ide);
         }
 
-        @Override
         protected boolean atlosanEloreUthet(Mezo innen, Mezo ide) {
-            if (abs(innen.getOszlop() - ide.getOszlop()) == 1) {
-                if (ide.getSor() < innen.getSor()) {
-                    return true;
-                }
-            }
-
-            return false;
+            return abs(innen.getOszlop() - ide.getOszlop()) == 1 && ide.getSor() < innen.getSor();
         }
 
-        @Override
-        public boolean azonosSzinu(Figura masik) {
-            return masik.getClass() == FEKETE_GYALOG.getClass();
+        protected String szine() {
+            return FEKETE;
         }
-    };
+    }
 
 
     @Override
