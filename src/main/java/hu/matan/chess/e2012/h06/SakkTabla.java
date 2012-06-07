@@ -1,11 +1,14 @@
 package hu.matan.chess.e2012.h06;
 
+import hu.matan.chess.e2012.h06.validalas.SajatBabutNemLehetUtniException;
 import hu.matan.chess.e2012.h06.validalas.UresMezoException;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static hu.matan.chess.e2012.h06.Figura.*;
+import static hu.matan.chess.e2012.h06.Gyalog.FEHER_GYALOG;
+import static hu.matan.chess.e2012.h06.Gyalog.FEKETE_GYALOG;
+import static hu.matan.chess.e2012.h06.Tobbi.*;
 
 /**
  * @author Setény János
@@ -81,10 +84,14 @@ public class SakkTabla {
 
         Figura figura = letezoFigura(innen);
 
-        if (utes(ide))
+        if (utes(ide)) {
+            if (figura(innen).azonosSzinu(figura(ide))) {
+                throw new SajatBabutNemLehetUtniException(innen, ide);
+            }
             figura.igyUtne(innen, ide);
-        else
+        } else {
             figura.igyLepne(innen, ide);
+        }
 
         setFigura(innen, null);
         setFigura(ide, figura);

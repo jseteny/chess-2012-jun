@@ -1,6 +1,7 @@
 package hu.matan.chess.e2012.h06;
 
 import hu.matan.chess.e2012.h06.validalas.GyalogNemLephetIgyException;
+import hu.matan.chess.e2012.h06.validalas.SajatBabutNemLehetUtniException;
 import org.junit.Test;
 
 /**
@@ -16,6 +17,12 @@ public class Utni_ne_lehessen extends KezdoAllapotTeszt {
         tabla.lepj("e5e6");
 
         tabla.lepj("c7e6");
+    }
+
+    @Test(expected = SajatBabutNemLehetUtniException.class)
+    public void gyaloggalSajatBabut() {
+        tabla.lepj("e2e3");
+        tabla.lepj("f2e3");
     }
 
 }

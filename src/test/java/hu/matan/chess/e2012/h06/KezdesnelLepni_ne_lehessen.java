@@ -21,12 +21,12 @@ public class KezdesnelLepni_ne_lehessen extends KezdoAllapotTeszt {
     }
 
     @Test(expected = GyalogNemLephetIgyException.class)
-    public void gyalognakAtlosan() {
+    public void feherGyalognakAtlosanLepni() {
         tabla.lepj("e2f3");
     }
 
     @Test(expected = GyalogNemLephetIgyException.class)
-    public void gyalognakC7rolE6ra() {
+    public void feketeGyalognakC7rolE6ra() {
         tabla.lepj("c7e6");
     }
 }

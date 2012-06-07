@@ -2,7 +2,9 @@ package hu.matan.chess.e2012.h06;
 
 import org.junit.Test;
 
-import static hu.matan.chess.e2012.h06.Figura.*;
+import static hu.matan.chess.e2012.h06.Gyalog.FEHER_GYALOG;
+import static hu.matan.chess.e2012.h06.Gyalog.FEKETE_GYALOG;
+import static hu.matan.chess.e2012.h06.Tobbi.*;
 import static junit.framework.Assert.assertEquals;
 
 /**
