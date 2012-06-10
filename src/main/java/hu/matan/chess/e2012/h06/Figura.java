@@ -28,12 +28,10 @@ public abstract class Figura {
 
         // ha nem fuggőlegesen fel vezet az út innen ide, akkor itt nem történik ellenörzés
 
-        if (innen.getOszlop() == ide.getOszlop()) {
-            if (innen.getSor() < ide.getSor()) {
-                char oszlop = innen.getOszlop();
-                for (int sor = innen.getSor() + 1; sor < ide.getSor(); ++sor) {
-                    egyEgyMezoEllenorzoje.ellenorizd(oszlop, sor);
-                }
+        if (innen.fuggolegesenFelMehet(ide)) {
+            char oszlop = innen.getOszlop();
+            for (int sor = innen.getSor() + 1; sor < ide.getSor(); ++sor) {
+                egyEgyMezoEllenorzoje.ellenorizd(oszlop, sor);
             }
         }
     }
@@ -42,40 +40,34 @@ public abstract class Figura {
 
         // ha nem fuggőlegesen le vezet az út innen ide, akkor itt nem történik ellenörzés
 
-        if (innen.getOszlop() == ide.getOszlop()) {
-            if (innen.getSor() > ide.getSor()) {
-                char oszlop = innen.getOszlop();
-                for (int sor = innen.getSor() - 1; sor > ide.getSor(); --sor) {
-                    egyEgyMezoEllenorzoje.ellenorizd(oszlop, sor);
-                }
+        if (innen.fuggolegesenLeMehet(ide)) {
+            char oszlop = innen.getOszlop();
+            for (int sor = innen.getSor() - 1; sor > ide.getSor(); --sor) {
+                egyEgyMezoEllenorzoje.ellenorizd(oszlop, sor);
             }
         }
     }
 
-    protected void vanEUtbanVizsintesenJobbra(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
-        todo
-        // ha nem fuggőlegesen fel vezet az út innen ide, akkor itt nem történik ellenörzés
+    protected void vanEUtbanVizszintesenJobbra(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
 
-        if (innen.getOszlop() == ide.getOszlop()) {
-            if (innen.getSor() < ide.getSor()) {
-                char oszlop = innen.getOszlop();
-                for (int sor = innen.getSor() + 1; sor < ide.getSor(); ++sor) {
-                    egyEgyMezoEllenorzoje.ellenorizd(oszlop, sor);
-                }
+        // ha nem vizszintesen jobbra vezet az út innen ide, akkor itt nem történik ellenörzés
+
+        if (innen.vizszintesenJobbraMehet(ide)) {
+            char oszlop = innen.getOszlop();
+            for (int sor = innen.getSor() + 1; sor < ide.getSor(); ++sor) {
+                egyEgyMezoEllenorzoje.ellenorizd(oszlop, sor);
             }
         }
     }
 
     protected void vanEUtbanVizszintesenBalra(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
-        todo
+
         // ha nem fuggőlegesen le vezet az út innen ide, akkor itt nem történik ellenörzés
 
-        if (innen.getOszlop() == ide.getOszlop()) {
-            if (innen.getSor() > ide.getSor()) {
-                char oszlop = innen.getOszlop();
-                for (int sor = innen.getSor() - 1; sor > ide.getSor(); --sor) {
-                    egyEgyMezoEllenorzoje.ellenorizd(oszlop, sor);
-                }
+        if (innen.vizszintesenBalraMehet(ide)) {
+            char oszlop = innen.getOszlop();
+            for (int sor = innen.getSor() - 1; sor > ide.getSor(); --sor) {
+                egyEgyMezoEllenorzoje.ellenorizd(oszlop, sor);
             }
         }
     }

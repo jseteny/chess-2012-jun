@@ -17,7 +17,7 @@ public abstract class Gyalog extends Figura {
         }
 
         protected boolean eloreMehet(Mezo innen, Mezo ide) {
-            return ide.getSor() > innen.getSor() && innen.fuggolegesenMehet(ide);
+            return innen.fuggolegesenFelMehet(ide);
         }
 
         protected boolean atlosanEloreUthet(Mezo innen, Mezo ide) {
@@ -37,7 +37,7 @@ public abstract class Gyalog extends Figura {
         }
 
         protected boolean eloreMehet(Mezo innen, Mezo ide) {
-            return ide.getSor() < innen.getSor() && innen.fuggolegesenMehet(ide);
+            return innen.fuggolegesenLeMehet(ide);
         }
 
         protected boolean atlosanEloreUthet(Mezo innen, Mezo ide) {

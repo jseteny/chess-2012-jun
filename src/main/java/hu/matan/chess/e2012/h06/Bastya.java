@@ -34,7 +34,7 @@ public abstract class Bastya extends Figura {
     public void vanEUtbanFigura(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
         vanEUtbanFuggolegesenFel(innen, ide, egyEgyMezoEllenorzoje);
         vanEUtbanFuggolegesenLe(innen, ide, egyEgyMezoEllenorzoje);
-        vanEUtbanVizsintesenJobbra(innen, ide, egyEgyMezoEllenorzoje);
+        vanEUtbanVizszintesenJobbra(innen, ide, egyEgyMezoEllenorzoje);
         vanEUtbanVizszintesenBalra(innen, ide, egyEgyMezoEllenorzoje);
     }
 }

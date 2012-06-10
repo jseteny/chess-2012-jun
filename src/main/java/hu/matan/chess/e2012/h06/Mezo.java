@@ -57,8 +57,20 @@ public final class Mezo {
                 '}';
     }
 
-    public boolean fuggolegesenMehet(Mezo ide) {
-        return oszlop == ide.oszlop;
+    public boolean fuggolegesenFelMehet(Mezo ide) {
+        return ide.oszlop == oszlop && ide.getSor() > getSor();
+    }
+
+    public boolean fuggolegesenLeMehet(Mezo ide) {
+        return ide.oszlop == oszlop && ide.getSor() < getSor();
+    }
+
+    public boolean vizszintesenJobbraMehet(Mezo ide) {
+        return ide.sor == sor && ide.getOszlop() > getOszlop();
+    }
+
+    public boolean vizszintesenBalraMehet(Mezo ide) {
+        return ide.sor == sor && ide.getOszlop() < getOszlop();
     }
 
     public boolean egyLepes(Mezo cel) {
