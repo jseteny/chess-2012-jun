@@ -2,6 +2,8 @@ package hu.matan.chess.e2012.h06;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import static java.lang.Math.abs;
+
 /**
  * @author Setény János
  * @version 6/6/12
@@ -26,49 +28,86 @@ public abstract class Figura {
 
     protected void vanEUtbanFuggolegesenFel(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
 
-        // ha nem fuggőlegesen fel vezet az út innen ide, akkor itt nem történik ellenörzés
-
         if (innen.fuggolegesenFelMehet(ide)) {
-            char oszlop = innen.getOszlop();
-            for (int sor = innen.getSor() + 1; sor < ide.getSor(); ++sor) {
-                egyEgyMezoEllenorzoje.ellenorizd(oszlop, sor);
-            }
+            int lepesSzam = ide.getSor() - innen.getSor();
+            vizsgaldMezonkent(innen, oszlopLeptetoLegyen(0), sorLeptetoLegyen(1), lepesSzam, egyEgyMezoEllenorzoje);
         }
     }
 
     protected void vanEUtbanFuggolegesenLe(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
 
-        // ha nem fuggőlegesen le vezet az út innen ide, akkor itt nem történik ellenörzés
-
         if (innen.fuggolegesenLeMehet(ide)) {
-            char oszlop = innen.getOszlop();
-            for (int sor = innen.getSor() - 1; sor > ide.getSor(); --sor) {
-                egyEgyMezoEllenorzoje.ellenorizd(oszlop, sor);
-            }
+            int lepesSzam = innen.getSor() - ide.getSor();
+            vizsgaldMezonkent(innen, oszlopLeptetoLegyen(0), sorLeptetoLegyen(-1), lepesSzam, egyEgyMezoEllenorzoje);
         }
     }
 
     protected void vanEUtbanVizszintesenJobbra(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
 
-        // ha nem vizszintesen jobbra vezet az út innen ide, akkor itt nem történik ellenörzés
-
         if (innen.vizszintesenJobbraMehet(ide)) {
-            char oszlop = innen.getOszlop();
-            for (int sor = innen.getSor() + 1; sor < ide.getSor(); ++sor) {
-                egyEgyMezoEllenorzoje.ellenorizd(oszlop, sor);
-            }
+            int lepesSzam = ide.getOszlop() - innen.getOszlop();
+            vizsgaldMezonkent(innen, oszlopLeptetoLegyen(1), sorLeptetoLegyen(0), lepesSzam, egyEgyMezoEllenorzoje);
         }
     }
 
     protected void vanEUtbanVizszintesenBalra(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
 
-        // ha nem fuggőlegesen le vezet az út innen ide, akkor itt nem történik ellenörzés
-
         if (innen.vizszintesenBalraMehet(ide)) {
-            char oszlop = innen.getOszlop();
-            for (int sor = innen.getSor() - 1; sor > ide.getSor(); --sor) {
-                egyEgyMezoEllenorzoje.ellenorizd(oszlop, sor);
-            }
+            int lepesSzam = innen.getOszlop() - ide.getOszlop();
+            vizsgaldMezonkent(innen, oszlopLeptetoLegyen(-1), sorLeptetoLegyen(0), lepesSzam, egyEgyMezoEllenorzoje);
+        }
+    }
+
+    protected void vanEUtbanAtlosanBalraFel(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
+
+        if (innen.atlosanBalraFelMehet(ide)) {
+            int lepesSzam = abs(innen.getOszlop() - ide.getOszlop());
+            vizsgaldMezonkent(innen, oszlopLeptetoLegyen(-1), sorLeptetoLegyen(1), lepesSzam, egyEgyMezoEllenorzoje);
+        }
+    }
+
+    protected void vanEUtbanAtlosanJobbraFel(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
+
+        if (innen.atlosanJobbraFelMehet(ide)) {
+            int lepesSzam = abs(innen.getOszlop() - ide.getOszlop());
+            vizsgaldMezonkent(innen, oszlopLeptetoLegyen(1), sorLeptetoLegyen(1), lepesSzam, egyEgyMezoEllenorzoje);
+        }
+    }
+
+    protected void vanEUtbanAtlosanJobbraLe(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
+
+        if (innen.atlosanJobbraLeMehet(ide)) {
+            int lepesSzam = abs(innen.getOszlop() - ide.getOszlop());
+            vizsgaldMezonkent(innen, oszlopLeptetoLegyen(1), sorLeptetoLegyen(-1), lepesSzam, egyEgyMezoEllenorzoje);
+        }
+    }
+
+    protected void vanEUtbanAtlosanBalraLe(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
+
+        if (innen.atlosanBalraLeMehet(ide)) {
+            int lepesSzam = abs(innen.getOszlop() - ide.getOszlop());
+            vizsgaldMezonkent(innen, oszlopLeptetoLegyen(-1), sorLeptetoLegyen(-1), lepesSzam, egyEgyMezoEllenorzoje);
+        }
+    }
+
+    private int sorLeptetoLegyen(int ez) {
+        return ez;
+    }
+
+    private int oszlopLeptetoLegyen(int ez) {
+        return ez;
+    }
+
+    private void vizsgaldMezonkent(Mezo innen, int oszlopLepteto, int sorLepteto, int lepesSzam, VanEIttFigura mezoEllenorzoje) {
+        char oszlop = innen.getOszlop();
+        int sor = innen.getSor();
+
+        int vizsgalandoLepes = lepesSzam - 1;
+        while (vizsgalandoLepes > 0) {
+            --vizsgalandoLepes;
+            oszlop += oszlopLepteto;
+            sor += sorLepteto;
+            mezoEllenorzoje.ellenorizd(oszlop, sor);
         }
     }
 

@@ -51,10 +51,7 @@ public final class Mezo {
 
     @Override
     public String toString() {
-        return "Mezo{" +
-                "oszlop=" + oszlop +
-                ", sor=" + sor +
-                '}';
+        return "" + oszlop + sor;
     }
 
     public boolean fuggolegesenFelMehet(Mezo ide) {
@@ -71,6 +68,45 @@ public final class Mezo {
 
     public boolean vizszintesenBalraMehet(Mezo ide) {
         return ide.sor == sor && ide.getOszlop() < getOszlop();
+    }
+
+
+    public boolean atlosanMehet(Mezo ide) {
+        return Math.abs(ide.sor - sor) == Math.abs(ide.oszlop - oszlop);
+    }
+
+
+    private boolean felMehet(Mezo ide) {
+        return ide.sor > sor;
+    }
+
+    private boolean leMehet(Mezo ide) {
+        return ide.sor < sor;
+    }
+
+    private boolean balraMehet(Mezo ide) {
+        return ide.oszlop < oszlop;
+    }
+
+    private boolean jobbraMehet(Mezo ide) {
+        return ide.oszlop > oszlop;
+    }
+
+
+    public boolean atlosanBalraFelMehet(Mezo ide) {
+        return atlosanMehet(ide) && balraMehet(ide) && felMehet(ide);
+    }
+
+    public boolean atlosanJobbraFelMehet(Mezo ide) {
+        return atlosanMehet(ide) && jobbraMehet(ide) && felMehet(ide);
+    }
+
+    public boolean atlosanJobbraLeMehet(Mezo ide) {
+        return atlosanMehet(ide) && jobbraMehet(ide) && leMehet(ide);
+    }
+
+    public boolean atlosanBalraLeMehet(Mezo ide) {
+        return atlosanMehet(ide) && balraMehet(ide) && leMehet(ide);
     }
 
     public boolean egyLepes(Mezo cel) {

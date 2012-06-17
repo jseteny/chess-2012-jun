@@ -1,7 +1,7 @@
 package hu.matan.chess.e2012.h06;
 
 import hu.matan.chess.e2012.h06.validalas.CsakHuszarralLehetAtugraniException;
-import hu.matan.chess.e2012.h06.validalas.SajatBabutNemLehetUtniException;
+import hu.matan.chess.e2012.h06.validalas.SajatFiguratNemLehetUtniException;
 import hu.matan.chess.e2012.h06.validalas.UresMezoException;
 
 import java.util.HashMap;
@@ -112,7 +112,7 @@ public class SakkTabla {
 
             if (utes(ide)) {
                 if (figura(innen).azonosSzinu(figura(ide))) {
-                    throw new SajatBabutNemLehetUtniException(innen, ide);
+                    throw new SajatFiguratNemLehetUtniException(innen, ide);
                 }
                 lepoFigura.igyUtne(innen, ide);
             } else {

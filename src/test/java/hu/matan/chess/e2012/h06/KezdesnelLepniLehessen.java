@@ -16,7 +16,7 @@ import static org.junit.Assert.assertThat;
 public class KezdesnelLepniLehessen extends KezdoAllapotTeszt {
 
     @Test
-    public void feherGyalognakE2rolE4re() {
+    public void feherGyalognakKettotE2rolE4re() {
         tabla.lepj("e2e4");
 
         assertNull("Elmozdult a gyalog e2-ről", tabla.figura("e2"));
@@ -24,11 +24,19 @@ public class KezdesnelLepniLehessen extends KezdoAllapotTeszt {
     }
 
     @Test
-    public void feketeGyalognakE7rolE5re() {
+    public void feketeGyalognakKettotE7rolE5re() {
         tabla.lepj("e7e5");
 
         assertNull("Elmozdult a gyalog e7-ről", tabla.figura("e7"));
         assertThat(tabla.figura("e5"), instanceOf(FEKETE_GYALOG.class));
+    }
+
+    @Test
+    public void feketeGyalognakEgyetD7rolD6re() {
+        tabla.lepj("d7d6");
+
+        assertNull("Elmozdult a gyalog d7-ről", tabla.figura("d7"));
+        assertThat(tabla.figura("d6"), instanceOf(FEKETE_GYALOG.class));
     }
 
     @Test

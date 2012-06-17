@@ -1,9 +1,6 @@
 package hu.matan.chess.e2012.h06;
 
-import hu.matan.chess.e2012.h06.validalas.GyalogNemLephetIgyException;
-import hu.matan.chess.e2012.h06.validalas.HuszarNemLephetIgyException;
-import hu.matan.chess.e2012.h06.validalas.SajatBabutNemLehetUtniException;
-import hu.matan.chess.e2012.h06.validalas.UresMezoException;
+import hu.matan.chess.e2012.h06.validalas.*;
 import org.junit.Test;
 
 /**
@@ -37,7 +34,7 @@ public class KezdesnelLepni_ne_lehessen extends KezdoAllapotTeszt {
         tabla.lepj("g2f7");
     }
 
-    @Test(expected = SajatBabutNemLehetUtniException.class)
+    @Test(expected = SajatFiguratNemLehetUtniException.class)
     public void feherHuszarralB1rolD2re() {
         tabla.lepj("b1d2");
     }
@@ -45,5 +42,11 @@ public class KezdesnelLepni_ne_lehessen extends KezdoAllapotTeszt {
     @Test(expected = HuszarNemLephetIgyException.class)
     public void feherHuszarralB1rolD3ra() {
         tabla.lepj("b1d3");
+    }
+
+    @Test(expected = CsakHuszarralLehetAtugraniException.class)
+
+    public void feketeFutovalC8rolE6ra() {
+        tabla.lepj("c8e6");
     }
 }

@@ -18,6 +18,6 @@ public class CsakHuszarralLehetAtugraniException extends NemLephetIgyException {
 
     @Override
     public String getMessage() {
-        return super.getMessage() + " ezt: " + ezt;
+        return super.getMessage() + ", ezt: " + ezt;
     }
 }

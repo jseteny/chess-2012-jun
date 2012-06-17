@@ -2,6 +2,7 @@ package hu.matan.chess.e2012.h06;
 
 import org.junit.Test;
 
+import static hu.matan.chess.e2012.h06.Futo.FEHER_FUTO;
 import static hu.matan.chess.e2012.h06.Gyalog.FEKETE_GYALOG;
 import static hu.matan.chess.e2012.h06.Huszar.FEHER_HUSZAR;
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -33,5 +34,15 @@ public class UtniLehessen extends KezdoAllapotTeszt {
         tabla.lepj("d5e7");
         assertNull("Feher huszar elmozdult d5-ről hogy üssön", tabla.figura("d5"));
         assertThat(tabla.figura("e7"), instanceOf(FEHER_HUSZAR.class));
+    }
+
+    @Test
+    public void feherFutoval() {
+        tabla.lepj("e2e3");
+        tabla.lepj("a7a6");
+
+        tabla.lepj("f1a6");
+        assertNull("Fehér futó elmozdult f1-ről hogy üssön", tabla.figura("f1"));
+        assertThat(tabla.figura("a6"), instanceOf(FEHER_FUTO.class));
     }
 }

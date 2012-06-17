@@ -1,6 +1,6 @@
 package hu.matan.chess.e2012.h06;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import hu.matan.chess.e2012.h06.validalas.FutoNemLephetIgyException;
 
 /**
  * @author Setény János
@@ -21,12 +21,24 @@ public abstract class Futo extends Figura {
     }
 
     @Override
+    public void vanEUtbanFigura(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
+        vanEUtbanAtlosanBalraFel(innen, ide, egyEgyMezoEllenorzoje);
+        vanEUtbanAtlosanJobbraFel(innen, ide, egyEgyMezoEllenorzoje);
+        vanEUtbanAtlosanJobbraLe(innen, ide, egyEgyMezoEllenorzoje);
+        vanEUtbanAtlosanBalraLe(innen, ide, egyEgyMezoEllenorzoje);
+    }
+
+    @Override
     public void igyUtne(Mezo innen, Mezo ide) {
-        throw new NotImplementedException();
+        igyLepne(innen, ide);
     }
 
     @Override
     public void igyLepne(Mezo innen, Mezo ide) {
-        throw new NotImplementedException();
+        if (innen.atlosanMehet(ide)) {
+            return;
+        }
+
+        throw new FutoNemLephetIgyException(innen, ide);
     }
 }
