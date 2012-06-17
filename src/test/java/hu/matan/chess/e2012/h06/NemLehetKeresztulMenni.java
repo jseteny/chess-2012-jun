@@ -11,8 +11,8 @@ public class NemLehetKeresztulMenni extends KezdoAllapotTeszt {
 
     @Test(expected = CsakHuszarralLehetAtugraniException.class)
 
-    public void sajatFiguranFeherBastyavalA1rolA7re() {
-        tabla.lepj("a1a7");
+    public void sajatFiguranFeherBastyavalA1rolA8ra() {
+        tabla.lepj("a1a8");
     }
 
     @Test(expected = CsakHuszarralLehetAtugraniException.class)

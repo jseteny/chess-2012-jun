@@ -54,6 +54,18 @@ public final class Mezo {
         return "" + oszlop + sor;
     }
 
+    public boolean fuggolegesenMehet(Mezo ide) {
+        return oszlop == ide.oszlop && sor != ide.sor;
+    }
+
+    public boolean vizszintesenMehet(Mezo ide) {
+        return sor == ide.sor && oszlop != ide.oszlop;
+    }
+
+    public boolean atlosanMehet(Mezo ide) {
+        return Math.abs(ide.sor - sor) == Math.abs(ide.oszlop - oszlop);
+    }
+
     public boolean fuggolegesenFelMehet(Mezo ide) {
         return ide.oszlop == oszlop && ide.getSor() > getSor();
     }
@@ -68,11 +80,6 @@ public final class Mezo {
 
     public boolean vizszintesenBalraMehet(Mezo ide) {
         return ide.sor == sor && ide.getOszlop() < getOszlop();
-    }
-
-
-    public boolean atlosanMehet(Mezo ide) {
-        return Math.abs(ide.sor - sor) == Math.abs(ide.oszlop - oszlop);
     }
 
 

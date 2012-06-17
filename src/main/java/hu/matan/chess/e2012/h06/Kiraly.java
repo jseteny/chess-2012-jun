@@ -20,6 +20,12 @@ public abstract class Kiraly extends Figura {
         }
     }
 
+
+    @Override
+    public void vanEUtbanFigura(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
+        throw new NotImplementedException();
+    }
+
     @Override
     public void igyUtne(Mezo innen, Mezo ide) {
         throw new NotImplementedException();

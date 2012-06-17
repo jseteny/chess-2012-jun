@@ -27,6 +27,26 @@ public class UtniLehessen extends KezdoAllapotTeszt {
     }
 
     @Test
+    public void feherBastyavalA1rolA7re() {
+        tabla.lepj("a2a4");
+        tabla.lepj("a4a5");
+        tabla.lepj("a5a6");
+        tabla.lepj("a6b7");
+
+        tabla.lepj("a1a7");
+    }
+
+    @Test
+    public void feketeBastyavalH8rolH2re() {
+        tabla.lepj("h7h5");
+        tabla.lepj("h5h4");
+        tabla.lepj("h4h3");
+        tabla.lepj("h3g2");
+
+        tabla.lepj("h8h2");
+    }
+
+    @Test
     public void feherHuszarral() {
         tabla.lepj("b1c3");
         tabla.lepj("c3d5");

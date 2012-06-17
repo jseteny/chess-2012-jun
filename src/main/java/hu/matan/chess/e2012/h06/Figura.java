@@ -1,7 +1,5 @@
 package hu.matan.chess.e2012.h06;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import static java.lang.Math.abs;
 
 /**
@@ -22,9 +20,7 @@ public abstract class Figura {
 
     public abstract void igyLepne(Mezo innen, Mezo ide);
 
-    public void vanEUtbanFigura(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
-        throw new NotImplementedException();
-    }
+    public abstract void vanEUtbanFigura(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje);
 
     protected void vanEUtbanFuggolegesenFel(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
 

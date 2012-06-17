@@ -1,6 +1,6 @@
 package hu.matan.chess.e2012.h06;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import hu.matan.chess.e2012.h06.validalas.BastyaNemLephetIgyException;
 
 /**
  * @author Setény János
@@ -22,12 +22,16 @@ public abstract class Bastya extends Figura {
 
     @Override
     public void igyUtne(Mezo innen, Mezo ide) {
-        throw new NotImplementedException();
+        igyLepne(innen, ide);
     }
 
     @Override
     public void igyLepne(Mezo innen, Mezo ide) {
-        throw new NotImplementedException();
+        if (innen.fuggolegesenMehet(ide) || innen.vizszintesenMehet(ide)) {
+            return;
+        }
+
+        throw new BastyaNemLephetIgyException(innen, ide);
     }
 
     @Override

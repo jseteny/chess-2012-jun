@@ -14,4 +14,14 @@ public class NeLehessenIlyenIranybaLepni extends KezdoAllapotTeszt {
     public void feherFutovalF1rolA7re() {
         tabla.lepj("f1a7");
     }
+
+    @Test
+    public void feketeBastyavalH8rolH5re() {
+        tabla.lepj("h7h5");
+        tabla.lepj("h5h4");
+        tabla.lepj("h4h3");
+        tabla.lepj("h3g2");
+
+        tabla.lepj("h8h5");
+    }
 }
