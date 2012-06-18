@@ -1,6 +1,6 @@
 package hu.matan.chess.e2012.h06;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import hu.matan.chess.e2012.h06.validalas.VezerNemLephetIgyException;
 
 /**
  * @author Setény János
@@ -23,16 +23,32 @@ public abstract class Vezer extends Figura {
 
     @Override
     public void vanEUtbanFigura(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
-        throw new NotImplementedException();
+        vanEUtbanAtlosanBalraFel(innen, ide, egyEgyMezoEllenorzoje);
+        vanEUtbanAtlosanBalraLe(innen, ide, egyEgyMezoEllenorzoje);
+        vanEUtbanAtlosanJobbraFel(innen, ide, egyEgyMezoEllenorzoje);
+        vanEUtbanAtlosanJobbraLe(innen, ide, egyEgyMezoEllenorzoje);
+
+        vanEUtbanFuggolegesenFel(innen, ide, egyEgyMezoEllenorzoje);
+        vanEUtbanFuggolegesenLe(innen, ide, egyEgyMezoEllenorzoje);
+        vanEUtbanVizszintesenBalra(innen, ide, egyEgyMezoEllenorzoje);
+        vanEUtbanVizszintesenJobbra(innen, ide, egyEgyMezoEllenorzoje);
     }
 
     @Override
     public void igyUtne(Mezo innen, Mezo ide) {
-        throw new NotImplementedException();
+        igyLepne(innen, ide);
     }
 
     @Override
     public void igyLepne(Mezo innen, Mezo ide) {
-        throw new NotImplementedException();
+        if (innen.atlosanMehet(ide)
+                || innen.fuggolegesenMehet(ide)
+                || innen.vizszintesenMehet(ide)) {
+
+            return;
+        }
+
+        throw new VezerNemLephetIgyException(innen, ide);
     }
 }
+

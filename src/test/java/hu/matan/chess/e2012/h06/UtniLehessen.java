@@ -65,4 +65,12 @@ public class UtniLehessen extends KezdoAllapotTeszt {
         assertNull("Fehér futó elmozdult f1-ről hogy üssön", tabla.figura("f1"));
         assertThat(tabla.figura("a6"), instanceOf(FEHER_FUTO.class));
     }
+
+    @Test
+    public void feherVezerrelD6rolH2re() {
+        tabla.lepj("d7d5");
+
+        tabla.lepj("d8d6");
+        tabla.lepj("d6h2");
+    }
 }

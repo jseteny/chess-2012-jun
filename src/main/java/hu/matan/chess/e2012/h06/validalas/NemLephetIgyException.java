@@ -10,7 +10,7 @@ public class NemLephetIgyException extends RuntimeException {
     protected Mezo innen;
     protected Mezo ide;
 
-    public NemLephetIgyException(Mezo ide, Mezo innen) {
+    public NemLephetIgyException(Mezo innen, Mezo ide) {
         this.ide = ide;
         this.innen = innen;
     }

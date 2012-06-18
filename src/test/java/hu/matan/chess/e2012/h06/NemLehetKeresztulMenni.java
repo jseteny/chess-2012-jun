@@ -9,11 +9,13 @@ import org.junit.Test;
  */
 public class NemLehetKeresztulMenni extends KezdoAllapotTeszt {
 
+
     @Test(expected = CsakHuszarralLehetAtugraniException.class)
 
     public void sajatFiguranFeherBastyavalA1rolA8ra() {
         tabla.lepj("a1a8");
     }
+
 
     @Test(expected = CsakHuszarralLehetAtugraniException.class)
 
@@ -21,9 +23,17 @@ public class NemLehetKeresztulMenni extends KezdoAllapotTeszt {
         tabla.lepj("a8a2");
     }
 
+
     @Test(expected = CsakHuszarralLehetAtugraniException.class)
 
     public void sajatFiguranFeherFutovalF1rolA6ra() {
         tabla.lepj("f1a6");
+    }
+
+
+    @Test(expected = CsakHuszarralLehetAtugraniException.class)
+
+    public void sajatFiguranFeherVezerrel() {
+        tabla.lepj("d1d3");
     }
 }
