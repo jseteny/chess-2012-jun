@@ -8,8 +8,8 @@ import static java.lang.Math.abs;
  */
 public abstract class Figura {
 
-    public final String FEHER = "feher";
-    public final String FEKETE = "fekete";
+    public static final String FEHER = "feher";
+    public static final String FEKETE = "fekete";
 
 
     public boolean azonosSzinu(Figura masik) {
