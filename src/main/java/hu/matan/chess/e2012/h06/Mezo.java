@@ -117,7 +117,7 @@ public final class Mezo {
     }
 
     public boolean egyLepes(Mezo cel) {
-        if (cel == this)
+        if (cel.equals(this))
             return false;
 
         if (abs(oszlop - cel.oszlop) > 1) {

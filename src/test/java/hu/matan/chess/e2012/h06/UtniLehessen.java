@@ -73,4 +73,13 @@ public class UtniLehessen extends KezdoAllapotTeszt {
         tabla.lepj("d8d6");
         tabla.lepj("d6h2");
     }
+
+    @Test
+    public void feherKirallyalE8rolD7re() {
+        tabla.lepj("e2e3");
+        tabla.lepj("f1b5");
+        tabla.lepj("b5d7");
+
+        tabla.lepj("e8d7");
+    }
 }

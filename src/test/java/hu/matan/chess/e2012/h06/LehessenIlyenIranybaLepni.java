@@ -30,4 +30,11 @@ public class LehessenIlyenIranybaLepni extends KezdoAllapotTeszt {
 
         tabla.lepj("d8d6");
     }
+
+    @Test
+    public void feketeKirallyalE8rolE7re() {
+        tabla.lepj("e7e5");
+
+        tabla.lepj("e8e7");
+    }
 }

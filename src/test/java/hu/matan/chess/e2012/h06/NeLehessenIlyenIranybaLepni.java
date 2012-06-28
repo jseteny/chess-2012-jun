@@ -2,6 +2,7 @@ package hu.matan.chess.e2012.h06;
 
 import hu.matan.chess.e2012.h06.validalas.BastyaNemLephetIgyException;
 import hu.matan.chess.e2012.h06.validalas.FutoNemLephetIgyException;
+import hu.matan.chess.e2012.h06.validalas.KiralyNemLephetIgyException;
 import hu.matan.chess.e2012.h06.validalas.VezerNemLephetIgyException;
 import org.junit.Test;
 
@@ -36,4 +37,14 @@ public class NeLehessenIlyenIranybaLepni extends KezdoAllapotTeszt {
     public void feherVezerD1rolA8ra() {
         tabla.lepj("d1a8");
     }
+
+
+    @Test(expected = KiralyNemLephetIgyException.class)
+
+    public void feketeKirallyalE8rolE7re() {
+        tabla.lepj("e7e5");
+
+        tabla.lepj("e8e6");
+    }
+
 }

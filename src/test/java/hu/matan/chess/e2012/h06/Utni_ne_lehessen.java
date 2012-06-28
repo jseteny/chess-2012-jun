@@ -10,6 +10,7 @@ import org.junit.Test;
  */
 public class Utni_ne_lehessen extends KezdoAllapotTeszt {
 
+
     @Test(expected = GyalogNemLephetIgyException.class)
 
     public void gyaloggalC7rolE6ra() {
@@ -20,6 +21,7 @@ public class Utni_ne_lehessen extends KezdoAllapotTeszt {
         tabla.lepj("c7e6");
     }
 
+
     @Test(expected = SajatFiguratNemLehetUtniException.class)
 
     public void gyaloggalSajatBabut() {
@@ -27,15 +29,38 @@ public class Utni_ne_lehessen extends KezdoAllapotTeszt {
         tabla.lepj("f2e3");
     }
 
+
     @Test(expected = SajatFiguratNemLehetUtniException.class)
 
     public void huszarralF7re() {
         tabla.lepj("g8f7");
     }
 
+
     @Test(expected = SajatFiguratNemLehetUtniException.class)
 
     public void feketeFutovalF8rolE7re() {
         tabla.lepj("f8e7");
+    }
+
+
+    @Test(expected = SajatFiguratNemLehetUtniException.class)
+
+    public void feketeKirallyalE8rolE7re() {
+        tabla.lepj("e8e7");
+    }
+
+
+    @Test(expected = SajatFiguratNemLehetUtniException.class)
+
+    public void feherKirallyalE1rolD1re() {
+        tabla.lepj("e1d1");
+    }
+
+
+    @Test(expected = SajatFiguratNemLehetUtniException.class)
+
+    public void feherKirallyalE1rolD2re() {
+        tabla.lepj("e1d2");
     }
 }

@@ -1,6 +1,6 @@
 package hu.matan.chess.e2012.h06;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import hu.matan.chess.e2012.h06.validalas.KiralyNemLephetIgyException;
 
 /**
  * @author Setény János
@@ -23,16 +23,20 @@ public abstract class Kiraly extends Figura {
 
     @Override
     public void vanEUtbanFigura(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
-        throw new NotImplementedException();
+        // csak 1 távolságra lép, így sosincs útban semmi
     }
 
     @Override
     public void igyUtne(Mezo innen, Mezo ide) {
-        throw new NotImplementedException();
+        igyLepne(innen, ide);
     }
 
     @Override
     public void igyLepne(Mezo innen, Mezo ide) {
-        throw new NotImplementedException();
+        if (innen.egyLepes(ide)) {
+            return;
+        }
+
+        throw new KiralyNemLephetIgyException(innen, ide);
     }
 }
