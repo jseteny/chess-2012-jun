@@ -1,7 +1,14 @@
-chess-2012-jun
+
+http://www.mychess.de/ChessNotation.htm
 ==============
 
+Laws of Chess - the notation, the PGN-notation
+
+
+
+
 http://www.sakk.hu/help/sakk_szabalyok.html
+==============
 
 Sakk szabályok
 
