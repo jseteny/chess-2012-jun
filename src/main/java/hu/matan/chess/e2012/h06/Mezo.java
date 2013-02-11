@@ -150,4 +150,16 @@ public final class Mezo {
     public char getOszlop() {
         return oszlop;
     }
+
+    public Mezo leEnnyit(int ennyit) {
+        return Mezo.at(oszlop, sor - ennyit);
+    }
+
+    public Mezo leJobbra() {
+        return Mezo.at((char) (oszlop + 1), sor - 1);
+    }
+
+    public Mezo leBalra() {
+        return Mezo.at((char) (oszlop - 1), sor - 1);
+    }
 }

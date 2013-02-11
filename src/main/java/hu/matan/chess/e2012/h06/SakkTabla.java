@@ -4,7 +4,9 @@ import hu.matan.chess.e2012.h06.validalas.CsakHuszarralLehetAtugraniException;
 import hu.matan.chess.e2012.h06.validalas.SajatFiguratNemLehetUtniException;
 import hu.matan.chess.e2012.h06.validalas.UresMezoException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static hu.matan.chess.e2012.h06.Bastya.FEHER_BASTYA;
@@ -28,8 +30,11 @@ public class SakkTabla {
 
     private Map<Mezo, Figura> tabla = new HashMap<Mezo, Figura>();
 
-
     public SakkTabla() {
+        allitsdAlapHelyzetbe();
+    }
+
+    private void allitsdAlapHelyzetbe() {
         setFigura('a', 8, new FEKETE_BASTYA());
         setFigura('b', 8, new FEKETE_HUSZAR());
         setFigura('c', 8, new FEKETE_FUTO());
@@ -88,10 +93,38 @@ public class SakkTabla {
         new Lepes(innen, ide).lepj();
     }
 
+    public boolean lephetneEIgy(Mezo innen, Mezo ide) {
+        try{
+            new Lepes(innen, ide).ellenorizdALepest();
+            return true;
+
+        } catch (RuntimeException ignored){
+            return false;
+        }
+    }
+
     private boolean utes(Mezo ide) {
         return figura(ide) != null;
     }
 
+    public List<Mezo> hovaLephet(String innen) {
+        Figura ezAFigura = figura(innen);
+        Mezo innnnen = Mezo.at(innen);
+        List<Mezo> ezekreLephet = new ArrayList<Mezo>();
+
+        for (Mezo ide : ezAFigura.ezekreLephetne(innnnen)) {
+            if(lephetneEIgy(innnnen, ide)){
+                ezekreLephet.add(ide);
+            }
+        }
+
+        for (Mezo ide : ezAFigura.ezekreUthetne(innnnen)) {
+            if(lephetneEIgy(innnnen, ide)){
+                ezekreLephet.add(ide);
+            }
+        }
+        return ezekreLephet;
+    }
 
     private class Lepes {
 
@@ -99,7 +132,7 @@ public class SakkTabla {
         private final Mezo ide;
         private final Figura lepoFigura;
 
-        public Lepes(Mezo innen, Mezo ide) {
+        private Lepes(Mezo innen, Mezo ide) {
             this.innen = innen;
             this.ide = ide;
             lepoFigura = tabla.get(innen);
@@ -107,6 +140,13 @@ public class SakkTabla {
 
         private void lepj() {
 
+            ellenorizdALepest();
+
+            setFigura(innen, null);
+            setFigura(ide, lepoFigura);
+        }
+
+        private void ellenorizdALepest() throws RuntimeException {
             ellenorizdHogyNemUresMezorolLep();
             ellenorizdHogyNincsUtbanSemmi();
 
@@ -118,9 +158,6 @@ public class SakkTabla {
             } else {
                 lepoFigura.igyLepne(innen, ide);
             }
-
-            setFigura(innen, null);
-            setFigura(ide, lepoFigura);
         }
 
         private void ellenorizdHogyNemUresMezorolLep() {

@@ -45,6 +45,6 @@ public abstract class Huszar extends Figura {
 
     @Override
     public void vanEUtbanFigura(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
-        // A huszárnak nics útban semmi
+        // A huszár mindent át tud ugorni, így nics útban semmi neki
     }
 }

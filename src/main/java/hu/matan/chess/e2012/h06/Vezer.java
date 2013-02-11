@@ -23,15 +23,17 @@ public abstract class Vezer extends Figura {
 
     @Override
     public void vanEUtbanFigura(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
-        vanEUtbanAtlosanBalraFel(innen, ide, egyEgyMezoEllenorzoje);
-        vanEUtbanAtlosanBalraLe(innen, ide, egyEgyMezoEllenorzoje);
-        vanEUtbanAtlosanJobbraFel(innen, ide, egyEgyMezoEllenorzoje);
-        vanEUtbanAtlosanJobbraLe(innen, ide, egyEgyMezoEllenorzoje);
+        vanEUtban(innen, ide, egyEgyMezoEllenorzoje)
+                .balraFel()
+                .jobbraFel()
+                .jobbraLe()
+                .balraLe();
 
-        vanEUtbanFuggolegesenFel(innen, ide, egyEgyMezoEllenorzoje);
-        vanEUtbanFuggolegesenLe(innen, ide, egyEgyMezoEllenorzoje);
-        vanEUtbanVizszintesenBalra(innen, ide, egyEgyMezoEllenorzoje);
-        vanEUtbanVizszintesenJobbra(innen, ide, egyEgyMezoEllenorzoje);
+        vanEUtban(innen, ide, egyEgyMezoEllenorzoje)
+                .fel()
+                .le()
+                .jobbra()
+                .balra();
     }
 
     @Override

@@ -36,9 +36,10 @@ public abstract class Bastya extends Figura {
 
     @Override
     public void vanEUtbanFigura(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
-        vanEUtbanFuggolegesenFel(innen, ide, egyEgyMezoEllenorzoje);
-        vanEUtbanFuggolegesenLe(innen, ide, egyEgyMezoEllenorzoje);
-        vanEUtbanVizszintesenJobbra(innen, ide, egyEgyMezoEllenorzoje);
-        vanEUtbanVizszintesenBalra(innen, ide, egyEgyMezoEllenorzoje);
+        vanEUtban(innen, ide, egyEgyMezoEllenorzoje)
+                .fel()
+                .le()
+                .jobbra()
+                .balra();
     }
 }

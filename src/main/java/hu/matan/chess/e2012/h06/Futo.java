@@ -22,10 +22,11 @@ public abstract class Futo extends Figura {
 
     @Override
     public void vanEUtbanFigura(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
-        vanEUtbanAtlosanBalraFel(innen, ide, egyEgyMezoEllenorzoje);
-        vanEUtbanAtlosanJobbraFel(innen, ide, egyEgyMezoEllenorzoje);
-        vanEUtbanAtlosanJobbraLe(innen, ide, egyEgyMezoEllenorzoje);
-        vanEUtbanAtlosanBalraLe(innen, ide, egyEgyMezoEllenorzoje);
+        vanEUtban(innen, ide, egyEgyMezoEllenorzoje)
+                .balraFel()
+                .jobbraFel()
+                .jobbraLe()
+                .balraLe();
     }
 
     @Override

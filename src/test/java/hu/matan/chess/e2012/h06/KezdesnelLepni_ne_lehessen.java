@@ -45,7 +45,6 @@ public class KezdesnelLepni_ne_lehessen extends KezdoAllapotTeszt {
     }
 
     @Test(expected = CsakHuszarralLehetAtugraniException.class)
-
     public void feketeFutovalC8rolE6ra() {
         tabla.lepj("c8e6");
     }
