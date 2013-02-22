@@ -2,6 +2,9 @@ package hu.matan.chess.e2012.h06;
 
 import hu.matan.chess.e2012.h06.validalas.HuszarNemLephetIgyException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static java.lang.Math.abs;
 
 /**
@@ -46,5 +49,41 @@ public abstract class Huszar extends Figura {
     @Override
     public void vanEUtbanFigura(Mezo innen, Mezo ide, VanEIttFigura egyEgyMezoEllenorzoje) {
         // A huszár mindent át tud ugorni, így nics útban semmi neki
+    }
+
+    @Override
+    public List<Mezo> ezekreLephetne(Mezo innen) {
+        List<Mezo> eredmeny=new ArrayList<Mezo>();
+
+        innen.fel2().jobbra1()
+                .addAListahozHaTablanBelulVan(eredmeny);
+
+        innen.fel1().jobbra2()
+                .addAListahozHaTablanBelulVan(eredmeny);
+
+        innen.le1().jobbra2()
+                .addAListahozHaTablanBelulVan(eredmeny);
+
+        innen.le2().jobbra1()
+                .addAListahozHaTablanBelulVan(eredmeny);
+
+        innen.le2().balra1()
+                .addAListahozHaTablanBelulVan(eredmeny);
+
+        innen.le1().balra2()
+                .addAListahozHaTablanBelulVan(eredmeny);
+
+        innen.fel1().balra2()
+                .addAListahozHaTablanBelulVan(eredmeny);
+
+        innen.fel2().balra1()
+                .addAListahozHaTablanBelulVan(eredmeny);
+
+        return eredmeny;
+    }
+
+    @Override
+    public List<Mezo> ezekreUthetne(Mezo innnnen) {
+        return super.ezekreUthetne(innnnen);    //To change body of overridden methods use File | Settings | File Templates.
     }
 }

@@ -1,16 +1,17 @@
 package hu.matan.chess.e2012.h06;
 
 import org.junit.Before;
+import org.junit.Rule;
+import org.junit.rules.TestName;
 
 /**
  * @author Setény János
  * @version 6/6/12
  */
-public class KezdoAllapotTeszt {
-    protected SakkTabla tabla;
+public class KezdoAllapotTeszt extends OsTeszt {
 
     @Before
     public void allitsdKezdoHelyzetbeATablat() {
-        tabla = new SakkTabla();
+        tabla = SakkTabla.alapHelyzetben();
     }
 }

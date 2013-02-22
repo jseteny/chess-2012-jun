@@ -12,7 +12,7 @@ public class CsakHuszarralLehetAtugraniException extends NemLephetIgyException {
 
 
     public CsakHuszarralLehetAtugraniException(Mezo innen, Mezo ide, Mezo ezt) {
-        super(ide, innen);
+        super(innen, ide);
         this.ezt = ezt;
     }
 

@@ -30,8 +30,21 @@ public class SakkTabla {
 
     private Map<Mezo, Figura> tabla = new HashMap<Mezo, Figura>();
 
-    public SakkTabla() {
-        allitsdAlapHelyzetbe();
+    public static SakkTabla alapHelyzetben() {
+        SakkTabla eredmeny = new SakkTabla();
+        eredmeny.allitsdAlapHelyzetbe();
+        return eredmeny;
+    }
+
+    public static SakkTabla uresen() {
+        return new SakkTabla();
+    }
+
+    protected SakkTabla() {
+    }
+
+    public void setFigura(char oszlop, int sor, Figura figura) {
+        tabla.put(Mezo.at(oszlop, sor), figura);
     }
 
     private void allitsdAlapHelyzetbe() {
@@ -76,10 +89,6 @@ public class SakkTabla {
 
     public Figura figura(Mezo mezo) {
         return tabla.get(mezo);
-    }
-
-    private void setFigura(char oszlop, int sor, Figura figura) {
-        tabla.put(Mezo.at(oszlop, sor), figura);
     }
 
     private void setFigura(Mezo mezo, Figura figura) {

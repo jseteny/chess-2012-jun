@@ -18,10 +18,6 @@ public abstract class Figura {
         return masik.szine().equals(this.szine());
     }
 
-    public boolean masSzinuMint(Figura masik) {
-        return false == masik.szine().equals(this.szine());
-    }
-
     public abstract void igyUtne(Mezo innen, Mezo ide);
 
     public abstract void igyLepne(Mezo innen, Mezo ide);

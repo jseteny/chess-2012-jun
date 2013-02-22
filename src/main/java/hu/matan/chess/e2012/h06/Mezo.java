@@ -1,5 +1,7 @@
 package hu.matan.chess.e2012.h06;
 
+import java.util.List;
+
 import static java.lang.Math.abs;
 
 /**
@@ -161,5 +163,45 @@ public final class Mezo {
 
     public Mezo leBalra() {
         return Mezo.at((char) (oszlop - 1), sor - 1);
+    }
+
+    public Mezo fel1() {
+        return new Mezo(oszlop, sor + 1);
+    }
+
+    public Mezo fel2() {
+        return new Mezo(oszlop, sor + 2);
+    }
+
+    public Mezo jobbra1() {
+        return new Mezo((char) (oszlop + 1), sor);
+    }
+
+    public Mezo jobbra2() {
+        return new Mezo((char) (oszlop + 2), sor);
+    }
+
+    public Mezo le1() {
+        return new Mezo(oszlop, sor - 1);
+    }
+
+    public Mezo le2() {
+        return new Mezo(oszlop, sor - 2);
+    }
+
+    public Mezo balra1() {
+        return new Mezo((char) (oszlop - 1), sor);
+    }
+
+    public Mezo balra2() {
+        return new Mezo((char) (oszlop - 2), sor);
+    }
+
+    public void addAListahozHaTablanBelulVan(List<Mezo> eredmeny) {
+        if ('a' <= oszlop && oszlop <= 'h') {
+            if (1 <= sor && sor <= 8) {
+                eredmeny.add(this);
+            }
+        }
     }
 }
