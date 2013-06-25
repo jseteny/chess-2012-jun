@@ -19,6 +19,9 @@ import static org.junit.Assert.assertThat;
 
 
 /**
+ * Kezdő állapot tesztelése: minden bábú a helén van-e.
+ * Nem ellenörzöm, hogy a többi mező üres-e?
+ *
  * @author Setény János
  * @version 6/6/12
  */
