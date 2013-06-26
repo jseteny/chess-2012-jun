@@ -35,7 +35,6 @@ public abstract class Figura {
     }
 
     public List<Mezo> ezekreUthetne(Mezo innnnen) {
-        //To change body of created methods use File | Settings | File Templates.
         return new ArrayList<Mezo>();
     }
 
